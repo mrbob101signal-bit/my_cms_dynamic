@@ -8,6 +8,7 @@ use App\Models\WebsiteSetting;
 use App\Http\Controllers\Controller;
 use App\Models\MailSetting;
 
+use function App\Helper\deleteImage;
 use function App\Helper\uploadImage;
 
 class WebsiteSettingController extends Controller
@@ -108,9 +109,17 @@ class WebsiteSettingController extends Controller
         # Color Setting 
         $website->primary_color = $request->input('primary_color');
         $website->secondary_color = $request->input('secondary_color');
+
         $website->title_color = $request->input('title_color');
+
         $website->text_color = $request->input('text_color');
+        $website->text_color_hover = $request->input('text_color_hover');
+        
+        $website->icon_color = $request->input('icon_color');
+        $website->icon_color_hover = $request->input('icon_color_hover');
+
         $website->body_color = $request->input('body_color');
+        
         $website->primary_font = $request->input('primary_font');
         $website->secondary_font = $request->input('secondary_font');
 
@@ -135,10 +144,65 @@ class WebsiteSettingController extends Controller
     SeoSetting update
     */
 
-    public function ImageSetting(Request $request, WebsiteSetting $website)
+    public function ImageSetting(Request $request)
     {
 
+        // return $website;
+
+        $website = WebsiteSetting::first();
+
+        // if($request->hasFile('site_logo')){
+        //     // $website['site_logo'] = uploadImage($request->site_logo, 'website');
+        //     $site_logo = uploadImage($request->file('site_logo'), 'website');
+        //     $website->site_logo = $site_logo;
+
+        //     deleteImage($website->site_logo);
+
+        // }
+
+        if ($request->hasFile('site_logo')) {
+
+            # Delete OLD Image
+            deleteImage($website->site_logo);
+
+            // Image Upload With Helper Function
+            $image = $request->file('site_logo');
+            $num2 = (rand(100000000, 9999999999));
+            $fileUrl = $num2 . '.' . $image->getClientOriginalExtension();
+            $path = $image->move('uploads/website/', $fileUrl);
+            $website->site_logo = $path;
+          
+
+        }
+
+        if ($request->hasFile('white_logo')) {
+
+            # Delete OLD Image
+            deleteImage($website->site_WhiteLogo);
+
+            // Image Upload With Helper Function
+           $website['site_WhiteLogo'] = uploadImage($request->white_logo, 'website');
+          
+        }
+
+        if ($request->hasFile('favicon')) {
+             # Delete OLD Image
+            deleteImage($website->site_favicon);
+            // Image Upload With Helper Function
+            // $website['site_favicon'] = uploadImage($request->favicon, 'website');
+            $image = $request->file('favicon');
+            // $num2 = (rand(100000000, 9999999999));
+            $fileUrl = time(). '.' . $image->getClientOriginalExtension();
+            $path = $image->move('uploads/website/', $fileUrl);
+            // return $path;
+            $website->site_favicon = $path;
+       
+        }
+
+        $website->save();
+
         # Image Setting 
+
         // $website->site_logo = $request->input('site_logo');
         // $website->site_WhiteLogo = $request->input('white_logo');
         // $website->site_favicon = $request->input('favicon');
@@ -159,19 +223,19 @@ class WebsiteSettingController extends Controller
 
 
         #site logo
-      
-            // $site_logo = $request->file('site_logo');
-            // $filename = time() . '.' . $site_logo->getClientOriginalExtension();
-            // $url = $site_logo->move('uploads/website/', $filename);
-            // $website->site_logo = $url;
-     
-            // $site_logo = uploadImage($request->file('site_logo'), 'uploads/website/');
-            // $white_logo = uploadImage($request->file('white_logo'), 'uploads/website/');
-            // $favicon= uploadImage($request->file('favicon'), 'uploads/website/');
 
-            // $website->site_logo = $site_logo;
-            // $website->site_WhiteLogo = $white_logo;
-            // $website->site_favicon = $favicon;
+        // $site_logo = $request->file('site_logo');
+        // $filename = time() . '.' . $site_logo->getClientOriginalExtension();
+        // $url = $site_logo->move('uploads/website/', $filename);
+        // $website->site_logo = $url;
+
+        // $site_logo = uploadImage($request->file('site_logo'), 'uploads/website/');
+        // $white_logo = uploadImage($request->file('white_logo'), 'uploads/website/');
+        // $favicon= uploadImage($request->file('favicon'), 'uploads/website/');
+
+        // $website->site_logo = $site_logo;
+        // $website->site_WhiteLogo = $white_logo;
+        // $website->site_favicon = $favicon;
 
 
 
@@ -211,6 +275,7 @@ class WebsiteSettingController extends Controller
         //     $url = $image->move('uploads/website/', $filename);
         //     $website->image = $url;
         // }
+
         // else if($request->hasFile('favicon')){
         //     $image = $request->file('favicon');
         //     $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -219,7 +284,7 @@ class WebsiteSettingController extends Controller
         // }
 
 
-        $website->save();
+        // $website->save();
 
         $notification = array(
             'alert-type' => 'success',
@@ -263,16 +328,17 @@ class WebsiteSettingController extends Controller
         return view('backend.websiteSetting.mailsetting');
     }
 
-    public function mailUpdate(Request $request, MailSetting $MailSetting){
+    public function mailUpdate(Request $request, MailSetting $MailSetting)
+    {
 
         // return $MailSetting;
 
-        $MailSetting->mail_driver = $request->mail_driver ;
-        $MailSetting->mail_host = $request->mail_host ;
-        $MailSetting->mail_port = $request->mail_port ;
-        $MailSetting->mail_encryption = $request->mail_encryption ;
-        $MailSetting->mail_username = $request->mail_username ;
-        $MailSetting->mail_password = $request->mail_password ;
+        $MailSetting->mail_driver = $request->mail_driver;
+        $MailSetting->mail_host = $request->mail_host;
+        $MailSetting->mail_port = $request->mail_port;
+        $MailSetting->mail_encryption = $request->mail_encryption;
+        $MailSetting->mail_username = $request->mail_username;
+        $MailSetting->mail_password = $request->mail_password;
 
         $MailSetting->save();
 
@@ -282,15 +348,15 @@ class WebsiteSettingController extends Controller
         );
 
         return redirect()->route('setting.mail-setting')->with($notification);
-
     }
-    
-    public function BasiMailUpdate(Request $request, MailSetting $MailSetting){
+
+    public function BasiMailUpdate(Request $request, MailSetting $MailSetting)
+    {
 
 
-        $MailSetting->mail_form_name = $request->mail_form_name ;
-        $MailSetting->mail_form_address = $request->mail_form_address ;
-        $MailSetting->mail_reply_email_address = $request->mail_reply_email_address ;
+        $MailSetting->mail_form_name = $request->mail_form_name;
+        $MailSetting->mail_form_address = $request->mail_form_address;
+        $MailSetting->mail_reply_email_address = $request->mail_reply_email_address;
         $MailSetting->save();
 
         $notification = array(
@@ -299,6 +365,5 @@ class WebsiteSettingController extends Controller
         );
 
         return redirect()->route('setting.mail-setting')->with($notification);
-
     }
 }

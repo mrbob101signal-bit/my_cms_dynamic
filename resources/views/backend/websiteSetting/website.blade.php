@@ -117,7 +117,7 @@
                                                             {{-- <div id="map"></div> --}}
 
                                                             <div id="googleMap" style="width:auto;height:650px;"></div>
-                                                            
+
 
                                                             <input type="hidden" id="la" name="la">
                                                             <input type="hidden" id="lo" name="lo">
@@ -173,10 +173,8 @@
                                                 <!-- form start -->
 
                                                 <div class="card-body">
-
                                                     <form action="{{ route('color.update', $website) }}" method="POST">
                                                         @csrf
-
                                                         <div class="d-flex">
                                                             <div class="form-group col-sm-3">
                                                                 <label>Primary Color:</label>
@@ -224,7 +222,6 @@
 
                                                             <div class="form-group col-sm-3">
                                                                 <label>Title Color:</label>
-
                                                                 <div id="color3"
                                                                     class="input-group my-colorpicker2 colorpicker-element"
                                                                     data-colorpicker-id="2">
@@ -240,11 +237,13 @@
                                                                 </div>
                                                                 <!-- /.input group -->
                                                             </div>
+                                                        </div>
 
-                                                            <div class="form-group col-sm-3">
+                                                        <div class="d-flex">
+
+                                                             <div class="form-group col-sm-3">
                                                                 <label>Text Color:</label>
-
-                                                                <div id="color4"
+                                                                <div id="color3"
                                                                     class="input-group my-colorpicker2 colorpicker-element"
                                                                     data-colorpicker-id="2">
                                                                     <input type="text" class="form-control"
@@ -260,10 +259,63 @@
                                                                 <!-- /.input group -->
                                                             </div>
 
+                                                            <div class="form-group col-sm-3">
+                                                                <label>Text Hover Color:</label>
+                                                                <div id="color4"
+                                                                    class="input-group my-colorpicker2 colorpicker-element"
+                                                                    data-colorpicker-id="2">
+                                                                    <input type="text" class="form-control"
+                                                                        data-original-title="" placeholder="Chouse Color"
+                                                                        name="text_color_hover"
+                                                                        value="{{ $website->text_color_hover }}">
+                                                                    <div class="input-group-append">
+                                                                        <span
+                                                                            class="input-group-text colorpicker-input-addon"><i></i></span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.input group -->
+                                                            </div>
+
+                                                            <div class="form-group col-sm-3">
+                                                                <label>Icon Color:</label>
+                                                                <div id="color5"
+                                                                    class="input-group my-colorpicker2 colorpicker-element"
+                                                                    data-colorpicker-id="2">
+                                                                    <input type="text" class="form-control"
+                                                                        data-original-title="" placeholder="Chouse Color"
+                                                                        name="icon_color"
+                                                                        value="{{ $website->icon_color }}">
+
+                                                                    <div class="input-group-append">
+                                                                        <span
+                                                                            class="input-group-text colorpicker-input-addon"><i></i></span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.input group -->
+                                                            </div>
+                                                            
+                                                            <div class="form-group col-sm-3">
+                                                                <label>Icon Hover Color:</label>
+                                                                <div id="color5"
+                                                                    class="input-group my-colorpicker2 colorpicker-element"
+                                                                    data-colorpicker-id="2">
+                                                                    <input type="text" class="form-control"
+                                                                        data-original-title="" placeholder="Chouse Color"
+                                                                        name="icon_color_hover"
+                                                                        value="{{ $website->icon_color_hover }}">
+
+                                                                    <div class="input-group-append">
+                                                                        <span
+                                                                            class="input-group-text colorpicker-input-addon"><i></i></span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.input group -->
+                                                            </div>
 
                                                         </div>
 
                                                         <div class="d-flex">
+
                                                             <div class="form-group col-sm-3">
                                                                 <label>Body Color:</label>
                                                                 <div id="color5"
@@ -282,7 +334,7 @@
                                                                 <!-- /.input group -->
                                                             </div>
 
-                                                            <div class="form-group col-sm-3">
+                                                             <div class="form-group col-sm-3">
                                                                 <label>Body Font:</label>
                                                                 <div class="input-group my-colorpicker2 colorpicker-element"
                                                                     data-colorpicker-id="2">
@@ -339,7 +391,6 @@
                                                                 </div>
 
                                                             </div>
-
 
                                                         </div>
 
@@ -460,21 +511,20 @@
                                                                 <input type="file" name="site_logo"
                                                                     class="form-control dropify"
                                                                     data-default-file="{{ asset($website->site_logo) }}"
-                                                                    data-min-height="200" id="logo">
+                                                                    alt="{{ $website->site_logo }}">
                                                             </div>
                                                             <div class="form-group col-sm-4">
                                                                 <label for="favicon">White Logo :</label>
                                                                 <input type="file" name="white_logo"
                                                                     class="form-control dropify"
-                                                                    data-default-file="{{ asset($website->site_WhiteLogo) }}"
-                                                                    data-min-height="200" id="favicon">
+                                                                    data-default-file="{{ asset($website->site_WhiteLogo) }}">
                                                             </div>
                                                             <div class="form-group col-sm-4">
                                                                 <label for="favicon">Favicon :</label>
                                                                 <input type="file" name="favicon"
                                                                     class="form-control dropify"
                                                                     data-default-file="{{ asset($website->site_favicon) }}"
-                                                                    data-min-height="200" id="favicon">
+                                                                    >
                                                             </div>
                                                         </div>
 

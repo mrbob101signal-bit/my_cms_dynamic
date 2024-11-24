@@ -29,7 +29,13 @@ return new class extends Migration
             $table->string('primary_color');
             $table->string('secondary_color');
             $table->string('title_color');
+
             $table->string('text_color');
+            $table->string('text_color_hover');
+            
+            $table->string('icon_color');
+            $table->string('icon_color_hover');
+
             $table->string('body_color');
 
             # Font Settings

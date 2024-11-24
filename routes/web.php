@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\PartnerController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashBoardController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\admin\PricePlanController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\frontend\WebsiteController;
@@ -42,6 +43,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 
+    // Page Route
+    Route::resource('/page', PageController::class);
+
+    // Route::get('/page', [DashboardController::class, 'page'])->name('admin.page');
+    
     // Route::get('/category', [DashboardController::class, 'category'])->name('admin.category');
 
     # Category Route API
@@ -175,6 +181,8 @@ Route::group(['prefix' => 'admin'], function () {
         // return response($list)->json('create',"Model create success");
         return response()->json(['success' => 'Model Create ' . $list . ' Success']);
     })->name('admin.clear');
+
+   
     
 });
 

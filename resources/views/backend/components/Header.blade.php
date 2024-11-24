@@ -7,7 +7,7 @@
     <title>@yield('title', 'Admin | Dashboard')</title>
 
     <!-- Fav Icon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('backend') }}/dist/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset($website->site_favicon) }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -80,24 +80,39 @@
 
     <style>
         :root {
-            --pxa-light-primary: {{ $website->primary_color }};
+            /* --pxa-light-primary: {{ $website->primary_color }}; */
+
             --pxa-primary: {{ $website->primary_color }};
-            --pxa-secondary: #000000;
-            --pxa-body-color: #f9f7fd;
+            --pxa-secondary:{{ $website->primary_secondary }};
+
+            --pxa-body-color: {{ $website->body_color }};
             --pxa-title-color: {{ $website->title_color }};
-            --pxa-text-color: #797979;
+
+            --pxa-text-color: {{ $website->text_color }};
+            --pxa-text-hover-color: {{ $website->text_color_hover }};
+
+            --pxa-icon-color:{{ $website->icon_color }};
+            --pxa-icon-hover-color:{{ $website->icon_color_hover }};
+
             --pxa-white-color: #ffffff;
             --pxa-gray-color: #FAFAFA;
+
             --pxa-border-color: #E8E8E8;
+            
             --all-transition: all 0.3s;
             --transition: all 0.3s ease-in-out;
+
             --pxa-header-background: #ffffff;
             --pxa-header-text: #797979;
+
             --pxa-footer-backgournd: #000000;
             --pxa-footer-text: #ffffff;
+
             --pxa-danger: #e81a46;
             --pxa-success: #6ca329;
+
             --pxa-sec-body-color: #F7F2FF;
+
         }
 
         /* $table->string('primary_color');

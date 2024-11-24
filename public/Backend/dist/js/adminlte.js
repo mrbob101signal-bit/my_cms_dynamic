@@ -1828,6 +1828,7 @@
       setTimeout(function () {
         $__default['default']('body.hold-transition').removeClass('hold-transition');
       }, 50);
+      
       setTimeout(function () {
         var $preloader = $__default['default'](SELECTOR_PRELOADER);
 
@@ -1837,6 +1838,7 @@
             $preloader.children().hide();
           }, 200);
         }
+        
       }, this._config.preloadDuration);
     };
 

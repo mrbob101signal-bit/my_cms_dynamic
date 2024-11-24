@@ -477,6 +477,7 @@ button.swiper-pagination-bullet {
   cursor: move;
 }
 /* Preloader */
+
 :root {
   /*
   --swiper-preloader-color: var(--swiper-theme-color);

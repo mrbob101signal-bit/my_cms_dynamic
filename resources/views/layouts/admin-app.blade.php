@@ -1,21 +1,28 @@
 @include('backend.components.Header')
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
-<div class="wrapper">
+    <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('backend')}}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            {{-- <img class="animation__shake" src="{{ asset($website->site_logo)}}" alt="AdminLTELogo" height="60" width="60"> --}}
+            
+            {{-- <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status"> --}}
+            <div class="spinner-grow">
+                {{-- <span class="visually-hidden"></span> --}}
+                <img class="" src="{{ asset($website->site_logo)}}" alt="AdminLTELogo">
+            </div>
 
-  <!-- Navbar -->
-  @include('backend.components.TopBar')
+        </div>
 
-  <!-- /.navbar -->
+        <!-- Navbar -->
+        @include('backend.components.TopBar')
 
-  <!-- Main Sidebar Container -->
-    @include('backend.components.SideBar')
+        <!-- /.navbar -->
 
-    @yield('content')
+        <!-- Main Sidebar Container -->
+        @include('backend.components.SideBar')
 
-@include('backend.components.Footer')
+        @yield('content')
+
+        @include('backend.components.Footer')

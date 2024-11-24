@@ -68,6 +68,8 @@
          --pxa-danger: #e81a46;
          --pxa-success: #6ca329;
          --pxa-sec-body-color: #F7F2FF;
+         --pxa-primary-color: {{ $website->primary_font }};
+         --pxa-secondary-color: {{ $website->secondary_font }};
          }
       </style>
 

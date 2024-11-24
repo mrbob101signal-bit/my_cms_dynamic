@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             WebsiteSettingSeeder::class,
             ServiceSeeder::class,
             MailSettingSeeder::class,
+            PageSeeder::class,
           
 
         ]);
