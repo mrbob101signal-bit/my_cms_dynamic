@@ -25,7 +25,7 @@ class ServiceController extends Controller
     {
         // $service = Service::find(1);
 
-          $service = Service::all();
+          $service = Service::latest()->get();
          $plan = PricePlan::all();
 
         //  $service = Service::all();
@@ -91,7 +91,16 @@ class ServiceController extends Controller
         $service->plans()->attach($request->plans);
 
 
-        if ($request->hasFile('image')) {
+        # Image Upload 
+
+        // if($request->hasFile('image')){
+
+        //     // Image upload with helper function
+
+        // }
+
+
+        if($request->hasFile('image')){
 
             // Image Upload With Helper Function
             $url = uploadImage($request->file('image'), 'service');

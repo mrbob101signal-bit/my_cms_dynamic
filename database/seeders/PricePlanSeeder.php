@@ -24,7 +24,6 @@ class PricePlanSeeder extends Seeder
                 'cat_id' => 10,
                 'feature' => 'Basic',
                 'status' => 'publish',
-
             ],
             [
                 'title' => 'Business',

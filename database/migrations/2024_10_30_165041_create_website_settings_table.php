@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('site_logo');
             $table->string('site_WhiteLogo');
             $table->string('site_favicon');
+            $table->string('site_loader_image');
             $table->string('site_email');
             $table->string('site_phone');
             $table->string('site_address');
@@ -37,6 +38,9 @@ return new class extends Migration
             $table->string('icon_color_hover');
 
             $table->string('body_color');
+
+            $table->string('active_bg_color');
+            $table->string('active_text_color');
 
             # Font Settings
             $table->string('primary_font');

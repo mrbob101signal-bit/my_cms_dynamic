@@ -86,11 +86,10 @@ class WebsiteController extends Controller
         // }
         // $list = Artisan::call("make:migration" . " " . $type.'/'.$model);
         //make:migration create_flights_table
-        Artisan::call("make:migration" . " create" .$model.'s'.'_table');
+        Artisan::call("make:migration" . "create" .$model.'s'.'_table');
         // dd(Artisan::output());
         // return response($list)->json('create',"Model create success");
-
-
+  
         $notification = array(
             'message' => 'Model Created successfully',
             'alert-type' => 'success',

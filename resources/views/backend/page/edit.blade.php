@@ -66,6 +66,12 @@
                                         </div>
 
                                     </div>
+                                   
+                                    <div class="form-group">
+                                            <label for="pageUrl">Page Description:</label>
+                                           <textarea name="description" id="summernote" class="form-control " placeholder="Enter Description...">{{ $page->pageDescription }}</textarea>
+                                          
+                                        </div>
 
                                     <!-- Page Seo  -->
 

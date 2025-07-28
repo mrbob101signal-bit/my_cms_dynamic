@@ -20,7 +20,7 @@ class BlogController extends Controller
     public function index()
     {
 
-        $blog = Blog::all();
+        $blog = Blog::latest()->get();
         return view('backend.blog.index', compact('blog'));
     }
 
@@ -32,7 +32,7 @@ class BlogController extends Controller
 
         $category = Category::all();
         $tags = Tag::all();
-        return view('backend.blog.create', compact('category','tags'));
+        return view('backend.blog.create', compact('category', 'tags'));
     }
 
     /**
@@ -93,7 +93,7 @@ class BlogController extends Controller
         $notification = array(
             'message' => 'Blog Created Successfully Done..!!',
             'alert-type' => 'success',
-            'data' =>'Created'
+            'data' => 'Created'
         );
 
         return redirect()->route('admin.blog.index')->with($notification);
@@ -104,7 +104,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        
+
 
         $blogList = Blog::where('cat_id', $blog->cat_id)->get();
         return view('backend.blog.single-blog', compact('blog'));
@@ -199,12 +199,11 @@ class BlogController extends Controller
 
         Blog::whereId($blog->id)->delete();
 
-        
+
         $notification = array(
             'message' => 'Blog Deleted Successfully',
             'alert-type' => 'error',
             'data' => 'Deleted',
-           
         );
 
         return redirect()->route('admin.blog.index')->with($notification);

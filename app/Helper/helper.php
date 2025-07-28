@@ -65,9 +65,9 @@ function deleteImage($image)
 
 
   // Delete the image file from the public folder
-   // if (file_exists(public_path($imagePath))) {
-   //    unlink(public_path($imagePath));  // Delete the file
-   // }
+//    if (file_exists(public_path($imagePath))) {
+//       unlink(public_path($imagePath));  // Delete the file
+//    }
 
    // // Delete the image record from the database
    // return $imageModel->delete();

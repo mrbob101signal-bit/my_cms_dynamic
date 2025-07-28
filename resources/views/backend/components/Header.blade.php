@@ -94,7 +94,10 @@
             --pxa-icon-color:{{ $website->icon_color }};
             --pxa-icon-hover-color:{{ $website->icon_color_hover }};
 
-            --pxa-white-color: #ffffff;
+            --pxa-active-bg-color:{{ $website->active_bg_color }};
+            --pxa-active-text-color:{{ $website->active_text_color }};
+
+            /* --pxa-white-color: #ffffff;
             --pxa-gray-color: #FAFAFA;
 
             --pxa-border-color: #E8E8E8;
@@ -111,7 +114,7 @@
             --pxa-danger: #e81a46;
             --pxa-success: #6ca329;
 
-            --pxa-sec-body-color: #F7F2FF;
+            --pxa-sec-body-color: #F7F2FF; */
 
         }
 

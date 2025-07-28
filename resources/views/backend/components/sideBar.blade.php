@@ -239,6 +239,13 @@
                         <p>Logout</p>
                     </a>
                 </li>
+                <hr class="clear">
+                 <li class="nav-item">
+                    <a href="{{ route('model.index') }}" class="nav-link ">
+                        <i class="far fa-circle"></i>
+                        <p>Model List</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

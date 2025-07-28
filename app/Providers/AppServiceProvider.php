@@ -4,17 +4,18 @@ namespace App\Providers;
 
 use App\Models\Faq;
 use App\Models\Blog;
+use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Category;
-use App\Models\MailSetting;
 use App\Models\PricePlan;
 use App\Models\TeamMember;
+use App\Models\MailSetting;
 use App\Models\Testimonial;
 use App\Models\WebsiteSetting;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -75,6 +76,8 @@ class AppServiceProvider extends ServiceProvider
         view()->share('categorylist', $categorylist);
 
 
+        //Pages
+        $page = Page::first();
 
         // $serviceCategory = Service::latest()->take(4)->get();
         
@@ -122,7 +125,7 @@ class AppServiceProvider extends ServiceProvider
 
         // View::share(['data' => $data]);
 
-        View::share(['category' => $category, 'TotalBlog' => $TotalBlog,'pricePlan' => $pricePlan, 'serviceCategory' => $serviceCategory, 'service' => $service, 'blog' => $blog, 'partner' => $partner, 'team' => $team, 'testimonial' => $testimonial, 'faq' => $faq, 'website' => $website, 'mailSetting' => $mailSetting]);
+        View::share(['category' => $category, 'TotalBlog' => $TotalBlog,'pricePlan' => $pricePlan, 'serviceCategory' => $serviceCategory, 'service' => $service, 'blog' => $blog, 'partner' => $partner, 'team' => $team, 'testimonial' => $testimonial, 'faq' => $faq, 'website' => $website, 'mailSetting' => $mailSetting, 'page' => $page]);
         }
     }
 }

@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('pageName');
             $table->string('slug');
             $table->string('pageUrl');
+            $table->text('pageDescription');
             $table->string('metaTitle');
             $table->string('metaKeywords');
             $table->text('metaDescription');
-            $table->text('headerScript');
-            $table->text('footerScript');
+            $table->text('headerScript')->nullable();
+            $table->text('footerScript')->nullable();
             $table->enum('pageStatus', ['publish', 'unpublish'])->default('publish');
             $table->timestamps();
         });

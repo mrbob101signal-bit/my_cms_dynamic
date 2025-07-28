@@ -71,6 +71,12 @@
 
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="pageUrl">Page Description:</label>
+                                        <textarea name="description" id="summernote" class="form-control " placeholder="Enter Description...">{{ $page->pageDescription }}</textarea>
+
+                                    </div>
+
                                     <!-- Page Seo  -->
 
                                     <div class="form-group">
@@ -124,18 +130,18 @@
     </div>
 
     <script>
-      function pageUrl(){
+        function pageUrl() {
 
-        var pageName = document.getElementById('pageName').value;
-        var pageUrl = document.getElementById('pageUrl').value = pageName;
-         
-        pageUrl = pageUrl.replace(/\s+/g, '-').toLowerCase();
+            var pageName = document.getElementById('pageName').value;
+            var pageUrl = document.getElementById('pageUrl').value = pageName;
 
-        document.getElementById('pageUrl').value = pageUrl;
+            pageUrl = pageUrl.replace(/\s+/g, '-').toLowerCase();
+
+            document.getElementById('pageUrl').value = pageUrl;
 
 
 
-      }
+        }
     </script>
 
 

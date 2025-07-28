@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\MailSetting;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\WebsiteSetting;
-use App\Http\Controllers\Controller;
-use App\Models\MailSetting;
+use App\Service\FileUploadService;
 
+use App\Http\Controllers\Controller;
 use function App\Helper\deleteImage;
 use function App\Helper\uploadImage;
 
 class WebsiteSettingController extends Controller
 {
+
+
+    public function __construct(private readonly FileUploadService $fileUploadService)
+    {
+        // Constructor logic if needed
+        
+        
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -107,6 +117,11 @@ class WebsiteSettingController extends Controller
     {
 
         # Color Setting 
+
+        # Backend Color Setting
+
+
+        # Frontend Color Setting
         $website->primary_color = $request->input('primary_color');
         $website->secondary_color = $request->input('secondary_color');
 
@@ -122,6 +137,12 @@ class WebsiteSettingController extends Controller
         
         $website->primary_font = $request->input('primary_font');
         $website->secondary_font = $request->input('secondary_font');
+
+        
+        # 
+        $website->active_bg_color = $request->input('active_bg_color');
+
+        $website->active_text_color = $request->input('active_text_color');
 
         $website->save();
 
@@ -197,6 +218,25 @@ class WebsiteSettingController extends Controller
             // return $path;
             $website->site_favicon = $path;
        
+        }
+
+
+        # site_loader_image
+
+
+        if ($request->hasFile('site_loader_image')) {
+            # Delete OLD Image
+            deleteImage($website->site_loader_image);
+            
+            // Image Upload With Helper Function
+           // $website['site_loader_image'] = uploadImage($request->site_loader_image, 'website');
+
+            $image = $request->file('site_loader_image');
+            // $num2 = (rand(100000000, 9999999999));
+            $fileUrl = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->move('uploads/website/', $fileUrl);
+            // return $path;
+            $website->site_loader_image = $path;
         }
 
         $website->save();

@@ -7,11 +7,11 @@
         <div class="preloader flex-column justify-content-center align-items-center">
             {{-- <img class="animation__shake" src="{{ asset($website->site_logo)}}" alt="AdminLTELogo" height="60" width="60"> --}}
             
-            {{-- <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status"> --}}
-            <div class="spinner-grow">
-                {{-- <span class="visually-hidden"></span> --}}
-                <img class="" src="{{ asset($website->site_logo)}}" alt="AdminLTELogo">
-            </div>
+            {{-- <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status"> 
+                <span class="visually-hidden"></span> 
+            </div> --}}
+
+            <img class="spinner-grow" src="{{ asset($website->site_loader_image)}}" alt="Site Loader Image">
 
         </div>
 

@@ -9,7 +9,7 @@
 # Sweet Alert 2
 # Toastify
 # Select2
-# Datatables
+# DataTables
 # Dropzone
 # Summernote
 # Datetimepicker

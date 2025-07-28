@@ -551,7 +551,7 @@
   }
 
   .pxa_about .pxa_sub_title {
-      color: var(--pxa-primary);
+      color: var(--pxa-primary-color);
       font-size: 18px;
       font-style: normal;
       font-weight: 500;
@@ -560,7 +560,7 @@
   }
 
   .pxa_about .pxa_title {
-      color: var(--pxa-title-color);
+      color: var(--pxa-secondary-color);
       font-size: 28px;
       font-style: normal;
       font-weight: 700;

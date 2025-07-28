@@ -4,8 +4,8 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>@yield('title', 'Build Your Website With Dynamic Modules')</title>
       <meta name="csrf-token" content="gTLshIospmgWRPo8AGfiHKY9mnEmgzs5l9HuQ9IB">
-      <title>@yeild('title','Build Your Website With Dynamic Modules')</title>
       <meta name="keywords" content="Page Builder  Unleash creativity   Dynamic Modules" />
       <meta name="description"
          content="Empower your online presence with dynamic modules and an intuitive page builder. Unleash creativity to design your unique website effortlessly. Start now!" />

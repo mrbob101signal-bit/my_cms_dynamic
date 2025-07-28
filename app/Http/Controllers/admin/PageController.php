@@ -54,9 +54,11 @@ class PageController extends Controller
         $page->pageName = $request->pageName;
         $page->slug = Str::slug($request->pageName);
         $page->pageUrl = $request->pageUrl;
+        $page->pageDescription = $request->description;
         $page->metaTitle = $request->metaTitle;
         $page->metaKeywords = $request->metaKeywords;
         $page->metaDescription = $request->metaDescription;
+
         $page->headerScript = $request->headerScript;
         $page->footerScript = $request->footerScript;
         $page->pageStatus = $request->pageStatus;
@@ -101,9 +103,11 @@ class PageController extends Controller
         $page->pageName = $request->pageName;
         $page->slug = Str::slug($request->pageName);
         $page->pageUrl = $request->pageUrl;
+        $page->pageDescription = $request->description;
         $page->metaTitle = $request->metaTitle;
         $page->metaKeywords = $request->metaKeywords;
         $page->metaDescription = $request->metaDescription;
+        
         $page->headerScript = $request->headerScript;
         $page->footerScript = $request->footerScript;
         $page->pageStatus = $request->pageStatus;

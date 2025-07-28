@@ -1,5 +1,20 @@
 <?php
 
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\admin\FaqController;
@@ -17,6 +32,7 @@ use App\Http\Controllers\frontend\WebsiteController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\admin\WebsiteSettingController;
+use App\Http\Controllers\CustomModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,17 +53,15 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', [DashBoardController::class, 'index'])->name('admin.dashboard');
 
-
     # Dashboard Route
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
 
     // Page Route
     Route::resource('/page', PageController::class);
 
     // Route::get('/page', [DashboardController::class, 'page'])->name('admin.page');
-    
+
     // Route::get('/category', [DashboardController::class, 'category'])->name('admin.category');
 
     # Category Route API
@@ -69,6 +83,9 @@ Route::group(['prefix' => 'admin'], function () {
     // resources
     // Route::resource('/categories', CategoryController::class);
 
+    # Faq Route API
+    // Route::resource('/faq', FaqController::class);
+
     # Blog Route API
     // Route::resource('/blog', BlogController::class);
 
@@ -86,9 +103,11 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/blog/show/{blog:slug}', [BlogController::class, 'show'])->name('admin.blog.show');
 
-
     # Service Route API
     route::resource('/service', ServiceController::class);
+
+    // route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+
 
     // route::get('/service/show/{service}', [ServiceController::class, 'show'])->name('service.show');
 
@@ -167,7 +186,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     route::get('clear', function () {
         // Artisan::call('php artisan r:l');
-        $folder = "user";
+        $folder = "Raj";
         $createName = $folder . "/" . "Emon";
 
         // if($createName){
@@ -176,15 +195,20 @@ Route::group(['prefix' => 'admin'], function () {
         // else{
 
         // }
+
         $list = Artisan::call("make:model" . " " . $createName);
         // dd(Artisan::output());
         // return response($list)->json('create',"Model create success");
+
         return response()->json(['success' => 'Model Create ' . $list . ' Success']);
     })->name('admin.clear');
-
-   
-    
 });
+
+# Model create
+
+Route::get('create-model', [CustomModelController::class,'index'])->name('model.index');
+Route::get('create-model/create', [CustomModelController::class,'create'])->name('model.create');
+Route::post('create-model/store', [CustomModelController::class,'store'])->name('model.store');
 
 
 #  ============= Frontend Route =============
@@ -222,3 +246,11 @@ Route::group(['prefix' => 'website'], function () {
 });
 
 #  ============= Frontend Route =============
+
+
+
+// # Admin Route #
+// require __DIR__ . '/admin.php';
+
+// # Frontend Route #
+// require __DIR__ . '/frontend.php';

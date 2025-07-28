@@ -1,6 +1,6 @@
 .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
 .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
-   background-color: #dee2e6;
+   background-color: #e98708;
    border-right: 3px solid blue;
   
 }
@@ -43,8 +43,7 @@
 
 .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link:hover .menu-text{
    color: var(--pxa-text-hover-color);
- 
-  
+   
 }
 
 .nav-sidebar>.nav-item>.nav-link{
@@ -137,6 +136,7 @@
    position: fixed;
    top: 0;
    background: var(--pxa-primary);
+   /* background: blue; */
 }
 
 .layout-navbar-fixed .wrapper .main-header {
@@ -195,7 +195,8 @@
 }
 
 .nav-link.active {
-   background: rgb(53, 52, 51) !important;
+   /* background: rgb(53, 52, 51) !important; */
+   background:var(--pxa-active-bg-color) !important;
    color: red !important;
 }
 
@@ -221,6 +222,6 @@
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
    /* color: rgb(219 20 20 / 30%); */
-   color: var(--pxa-text-hover-color);
+   color: blue;
 
 }

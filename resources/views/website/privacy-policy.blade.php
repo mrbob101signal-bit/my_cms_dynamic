@@ -1,12 +1,11 @@
 @extends('layouts.website')
 @section('content')
-   
     <section class="pxa_pages_policy mt_bgtempconatainer">
         <!--===  Header End ===-->
-        
+
         <!--===  Page Title Start ===-->
         <section class="pxa_page_title mt_bgtempconatainer"
-            style="background-image: url({{asset('frontend')}}/public/pages/assets/images/Breadcrumbs.jpg)">
+            style="background-image: url({{ asset('frontend') }}/public/pages/assets/images/Breadcrumbs.jpg)">
             <div class="pxa_container">
                 <div class="pxa_page_title_opacity">
                     <h2 class="">Privacy Policy</h2>
@@ -25,7 +24,8 @@
                 <h5 class="">Introduction</h5>
                 <ul>
                     <li>
-                        <p class="text-justify">Explanation of the purpose of the terms and conditions. It is a long established
+                        <p class="text-justify">Explanation of the purpose of the terms and conditions. It is a long
+                            established
                             fact that a
                             reader will be distracted by the readable content of a page when looking at its layout. The
                             point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
