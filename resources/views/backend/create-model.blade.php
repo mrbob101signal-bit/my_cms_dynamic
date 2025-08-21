@@ -67,12 +67,9 @@
                                             <span class="text-danger pt-2">{{ $message }}</span>
                                         @enderror
                                     </div>
-
-                                </div>
-
-                               
-
-                               
+                                </div> 
+                                                         
+                              
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save"></i> Create
                                 </button>

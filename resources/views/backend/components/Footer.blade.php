@@ -69,7 +69,8 @@
 <script></script>
 
 <!-- Toastify js -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+{{-- <script type="text/javascript" src="{{ asset('backend') }}/plugins/toastify/toastify-js.js"></script> --}}
+<script type="text/javascript" src="{{ asset('backend') }}/plugins/toastify/toastify.min.css"></script>
 {{-- <script>
     // Data Insert Toast
     @if (Session::has('success'))
@@ -226,7 +227,7 @@
 
 
 <!-- dropify -->
-<script src="{{ asset('backend') }}/dropify/dropify.min.js"></script>
+<script src="{{ asset('backend') }}/dropify/js/dropify.min.js"></script>
 
 <!-- Custom JS -->
 
@@ -237,10 +238,10 @@
             'default': 'Drag and drop a file here or click',
             'replace': 'Drag and drop or click to replace',
             'remove': 'Remove',
-            'error': 'Ooops, something wrong happended.'
+            'error': 'Ooops, something wrong happended.',
+            
         },
-        height: 250
-
+        height: 350
     });
 </script>
 
@@ -706,25 +707,26 @@
 {{-- <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxtHTPuxfqGKDeyp0d-N-EmE7Luy9ELJA&callback=initMap&v=weekly"></script> --}}
 
- 
+
 <script>
-   
+    function initMap() {
 
-     function initMap() {
+        const myLatLng = {
+            lat: 23.0626318,
+            lng: 89.8829389
+        };
 
-          const myLatLng = { lat:23.0626318, lng: 89.8829389 };
-
-          const map = new google.maps.Map(document.getElementById("googleMap"), {
+        const map = new google.maps.Map(document.getElementById("googleMap"), {
 
             zoom: 10,
 
             center: myLatLng,
 
-          });
+        });
 
-  
 
-          new google.maps.Marker({
+
+        new google.maps.Marker({
 
             position: myLatLng,
 
@@ -732,21 +734,18 @@
 
             title: "Hello Rajkot!",
 
-          });
+        });
 
-        }
+    }
 
-  
 
-        window.initMap = initMap;
 
+    window.initMap = initMap;
 </script>
 
 
-<script
-      src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly"
-      defer
-    ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap&v=weekly" defer>
+</script>
 
 
 </body>

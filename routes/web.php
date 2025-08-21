@@ -2,37 +2,31 @@
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+
 use App\Http\Controllers\admin\FaqController;
+
+# Frontend Controller Group
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\BlogController;
+
+
+# Backend Controller Group
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\CustomModelController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\GalleryController;
 use App\Http\Controllers\admin\PartnerController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashBoardController;
-use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\admin\PricePlanController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\frontend\WebsiteController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\admin\WebsiteSettingController;
-use App\Http\Controllers\CustomModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,12 +40,12 @@ use App\Http\Controllers\CustomModelController;
 */
 
 
-# // ============== Backend Routes ============== //
+# ============== Backend Routes ============== #
 
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('/', [DashBoardController::class, 'index'])->name('admin.dashboard');
+   // Route::get('/', [DashBoardController::class, 'index'])->name('admin.dashboard');
 
     # Dashboard Route
 
@@ -69,13 +63,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
     Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
     // Route::get('/category/create', [CategoryController::class, 'create']);
-
+    
+    
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+
     Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
 
     Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
-    // Route::delete('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    //Route::delete('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     // Single Data show in Category
     Route::get('/category/show/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
@@ -102,6 +98,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('/blog/Destroy/{blog}', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
 
     Route::get('/blog/show/{blog:slug}', [BlogController::class, 'show'])->name('admin.blog.show');
+
+    # Tag Route API
+
+    Route::resource('tag', TagController::class);
 
     # Service Route API
     route::resource('/service', ServiceController::class);
@@ -142,7 +142,6 @@ Route::group(['prefix' => 'admin'], function () {
     # Contract US Route API
 
     Route::resource('/contact', ContactController::class);
-
 
 
     # Website Setting Route API
@@ -200,9 +199,12 @@ Route::group(['prefix' => 'admin'], function () {
         // dd(Artisan::output());
         // return response($list)->json('create',"Model create success");
 
-        return response()->json(['success' => 'Model Create ' . $list . ' Success']);
+        return response()->json(['success' => 'Model Create' . $list . ' Success']);
     })->name('admin.clear');
 });
+
+# ============== Backend Routes  End ============== #
+
 
 # Model create
 

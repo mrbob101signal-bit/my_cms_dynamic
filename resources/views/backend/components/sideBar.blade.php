@@ -34,7 +34,7 @@
                     </a>
                 </li>
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('page.index') }}"
                         class="nav-link {{ request()->routeIs('page.index') ? 'active' : '' }}">
 
@@ -44,7 +44,7 @@
                         <span class="menu-text">
                             Page Management
                         </span>
-                       
+
                     </a>
                 </li>
 
@@ -86,6 +86,18 @@
                         </span>
                         <span class="menu-text">
                             Blog
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('tag.index') }}"
+                        class="nav-link {{ request()->routeIs('tag.index') ? 'active' : '' }}">
+                        <span class="icon-menu">
+                            <x-backend.icon.tag-icon />
+                        </span>
+                        <span class="menu-text">
+                            Tag
                         </span>
                     </a>
                 </li>
@@ -186,7 +198,7 @@
                     </a>
                     {{-- {{ request()->routeIs('setting.website') ? 'menu-open' : '' }} --}}
                 </li>
-                {{-- <li class="nav-item menu-is-opening @if('setting.website') ? 'menu-open' : '' @else('setting.mail-setting') ? 'menu-open' : '' @endif "> --}}
+                {{-- <li class="nav-item menu-is-opening @if ('setting.website') ? 'menu-open' : '' @else('setting.mail-setting') ? 'menu-open' : '' @endif "> --}}
                 <li class="nav-item menu-is-opening {{ request()->routeIs('setting.website') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         {{-- <i class="nav-icon fas fa-chart-pie"></i> --}}
@@ -240,7 +252,7 @@
                     </a>
                 </li>
                 <hr class="clear">
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('model.index') }}" class="nav-link ">
                         <i class="far fa-circle"></i>
                         <p>Model List</p>

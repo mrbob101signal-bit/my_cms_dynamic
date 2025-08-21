@@ -33,7 +33,7 @@ class CategorySeeder extends Seeder
         // ]);
 
 
-        $randID = rand(1, 100);
+        $randID = rand(1, 300);
         $category = [
             
             [

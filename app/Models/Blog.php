@@ -12,7 +12,7 @@ class Blog extends Model
         'title',
         'slug',
         'cat_id',
-        'tag_id',
+        'tags',
         'description',
         'author',
         'meta_title',
@@ -30,4 +30,9 @@ class Blog extends Model
     public function category(){
         return $this->belongsTo(Category::class, 'cat_id');
     }
+
+    # Tag Relationship
+    // public function tags(){
+    //     return $this->hasMany(Tag::class);
+    // }
 }

@@ -101,6 +101,8 @@ class CustomModelController extends Controller
 
         // $notification = array(
         //     'message' => 'Model Created successfully',
+
+        
         //     'alert-type' => 'success',
         //     'data' => 'Created',
         // );

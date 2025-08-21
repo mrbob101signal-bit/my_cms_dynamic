@@ -49,7 +49,7 @@
                                         value="{{ old('CategoryName') }}">
 
                                     @error('CategoryName')
-                                        <span class="text-danger pt-2">{{ $message }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
@@ -59,7 +59,7 @@
                                         <label for="type">Type:</label>
                                         <select name="type" id="type"
                                             class="form-control @error('type') is-invalid @enderror">
-                                            <option value=""> >> Chouse Type << </option>
+                                            <option value=""> >> Choose Type << </option>
                                             <option value="blog">Blog</option>
                                             <option value="service">Service</option>
                                             <option value="pricePlan">PricePlan</option>
@@ -94,6 +94,9 @@
                                     {{-- <input type="file" class="dropify"  name="imgUpload" data-height="200" /> --}}
                                     <input name="imgUpload" type="file" class="dropify" data-default-file=""
                                         data-height="250" />
+                                         @error('imgUpload')
+                                            <span class="text-danger pt-2">{{ $message }}</span>
+                                        @enderror
                                 </div>
 
                                 {{-- <div class="container" style="width:364px;">

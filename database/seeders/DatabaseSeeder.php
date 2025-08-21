@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CategorySeeder::class,
-            TagSeeder::class,
             BlogSeeder::class,
+            TagSeeder::class,
             FaqSeeder::class,
             GallerySeeder::class,
             PartnerSeeder::class,
@@ -41,12 +41,11 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             MailSettingSeeder::class,
             PageSeeder::class,
-          
 
         ]);
 
-        Contact::factory()->count(5)->create();
+      //  Contact::factory()->count(5)->create();
         // Service::factory()->count(5)->create();
-        Post::factory()->count(5)->create();
+       // Post::factory()->count(5)->create();
     }
 }

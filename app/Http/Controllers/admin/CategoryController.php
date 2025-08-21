@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
@@ -34,25 +36,9 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        # Validation
-        $request->validate([
-            'CategoryName' => 'required|unique:categories,name',
-                'type' => 'required',
-                'status' => 'required'
-        ],
-
-        # Custom Validation
-
-            [
-                'CategoryName.required' => 'Category Name is Required',
-                'CategoryName.unique' => 'Category Name Already Exist',
-                'type.required' => 'Type is Required',
-                'status.required' => 'Status is Required'
-            ]);
-
-
+        
         $cat = Category::create([
             'name' => $request->input('CategoryName'),
             'slug' => Str::slug($request->CategoryName),
@@ -123,7 +109,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryUpdateRequest $request, string $id)
     {
         
 

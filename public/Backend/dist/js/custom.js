@@ -61,6 +61,27 @@ $(function () {
 
 // =================  End of Sweet Alert 2 ==============
 
+
+
+// ================= Toaster Notification Flash Message  ==============
+
+if (Session.has("success") || Session.has("error") || session.has("message")) {
+    toastr.options = {
+        closeButton: true,
+        debug: false,
+        progressBar: true,
+        positionClass: "toast-top-right",
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+    };
+}
+
 // <!-- Toastify -->
 
 // =============  Start Toaster Flash Message ==================

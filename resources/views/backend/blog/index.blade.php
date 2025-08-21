@@ -53,8 +53,7 @@
                                         <th>Tags</th>
                                         <th>Picture</th>
                                         <th>Status</th>
-                                        <th>Ation</th>
-
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,7 +80,8 @@
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                 </a>
 
-                                                <a href="{{ route('admin.blog.edit', $item->slug) }}" class="btn btn-info btn-sm">
+                                                <a href="{{ route('admin.blog.edit', $item->slug) }}"
+                                                    class="btn btn-info btn-sm">
                                                     <i class="far fa-edit"></i>
                                                 </a>
 

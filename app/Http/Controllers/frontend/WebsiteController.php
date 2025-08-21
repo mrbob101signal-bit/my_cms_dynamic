@@ -95,11 +95,10 @@ class WebsiteController extends Controller
             'alert-type' => 'success',
             'data' => 'Created',
         );
+
         return redirect()->route('model-create')->with($notification);
 
-
         // return response()->json(['success' => 'Model Create ' . $list . ' Success']);
-
         // return view('backend.create-model');
     }
 }

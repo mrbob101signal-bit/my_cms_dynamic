@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/plugins/sweetalert2/sweetalert2.min.css">
 
     <!-- toastify CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/plugins/toastify/toastify.min.css">
 
     <!-- iconpicker CSS -->
 
@@ -59,6 +59,8 @@
     {{-- <link rel="stylesheet" href="dist/css/bootstrap-iconpicker.min.css"/> --}}
     {{-- fontawesome-iconpicker.min.css --}}
 
+    <!-- dropify -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/dropify/css/dropify.css">
 
 
     <!-- Font Awesome iconpicker CSS -->
@@ -72,8 +74,6 @@
     <!-- toaster -->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/plugins/toastr/toastr.min.css">
 
-    <!-- dropify -->
-    <link rel="stylesheet" href="{{ asset('backend') }}/dropify/dropify.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('backend') }}/dist/css/style.css">
@@ -83,7 +83,7 @@
             /* --pxa-light-primary: {{ $website->primary_color }}; */
 
             --pxa-primary: {{ $website->primary_color }};
-            --pxa-secondary:{{ $website->primary_secondary }};
+            --pxa-secondary: {{ $website->primary_secondary }};
 
             --pxa-body-color: {{ $website->body_color }};
             --pxa-title-color: {{ $website->title_color }};
@@ -91,11 +91,11 @@
             --pxa-text-color: {{ $website->text_color }};
             --pxa-text-hover-color: {{ $website->text_color_hover }};
 
-            --pxa-icon-color:{{ $website->icon_color }};
-            --pxa-icon-hover-color:{{ $website->icon_color_hover }};
+            --pxa-icon-color: {{ $website->icon_color }};
+            --pxa-icon-hover-color: {{ $website->icon_color_hover }};
 
-            --pxa-active-bg-color:{{ $website->active_bg_color }};
-            --pxa-active-text-color:{{ $website->active_text_color }};
+            --pxa-active-bg-color: {{ $website->active_bg_color }};
+            --pxa-active-text-color: {{ $website->active_text_color }};
 
             /* --pxa-white-color: #ffffff;
             --pxa-gray-color: #FAFAFA;
@@ -142,6 +142,25 @@
         element.style {
             position: relative;
             /* overflow: hidden; */
+        }
+
+
+        .dropify {
+            font-size: 12px;
+            text-transform: uppercase;
+            background: #DDD;
+            color: #888;
+            font-weight: bold;
+            border: 0;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-left: 10px;
+            -webkit-transition: background 0.1s linear;
+            transition: background 0.1s linear;
+        }
+
+        .dropify:hover {
+            background: #EEE;
         }
     </style>
 

@@ -13,7 +13,7 @@ class TagSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        // Tag List
         $tag = ['PHP','Laravel','Python','Java','C++','C#','Ruby','Go','Swift','Rust','JavaScript','HTML','CSS'];
 
         foreach ($tag as $value) {

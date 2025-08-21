@@ -69,7 +69,7 @@
                                                     Active
                                                 </label>
                                                 <label
-                                                    class="btn btn-outline-primary btn-toggle {{ $faq->FaqStatus == 'active' ? '' : 'active' }} ">
+                                                    class="btn btn-outline-danger btn-toggle {{ $faq->FaqStatus == 'active' ? '' : 'active' }} ">
                                                     <input type="radio" name="FaqStatus" id="option2" autocomplete="off"
                                                         value="deactive"
                                                         {{ $faq->FaqStatus == 'active' ? '' : 'checked' }}> Inactive

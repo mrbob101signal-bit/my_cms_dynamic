@@ -64,6 +64,7 @@ class GalleryController extends Controller
             'alert-type' => 'success',
             'data' => 'Created',
         );
+        
         return redirect()->route('gallery.index')->with($notification);
 
 

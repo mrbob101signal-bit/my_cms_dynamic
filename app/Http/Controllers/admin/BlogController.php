@@ -5,15 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Tag;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Helpers\FileUpload;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Service\FileUploadService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+
+use function App\Helper\uploadImage;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Console\Helper\ProgressBar;
 
 class BlogController extends Controller
 {
+
+    protected $fileService;
+
+    public function __construct(FileUploadService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -54,9 +65,9 @@ class BlogController extends Controller
         $data['title'] = $request->title;
         $data['slug'] = Str::slug($request->title);
         $data['cat_id'] = $request->cat_id;
-        $tag = implode(',', $request->tags);
+        // $tag = implode(',', $request->tags);
         // dd($tag);
-        $data['tag_id'] = $tag;
+        $data['tags'] = $request->tags;
 
         $data['description'] = $request->description;
         $data['author'] = $request->author;
@@ -71,7 +82,21 @@ class BlogController extends Controller
         $data['meta_description'] = $request->meta_description;
 
 
+        # how to use service class on Image upload
 
+        //$data['image'] = uploadImage($request->file('image'), 'car');
+
+
+        // Image upload Helper Function
+
+        // $data['image'] = uploadImage::uploadImage($request->file('FileUpload'), 'blog');
+
+        //  FileUpload::upload($request->file('FileUpload'), 'blog');
+
+        // $imagePath = FileUpload::uploadImage($request->file('FileUpload'), 'uploads/test');
+        // $data['image'] = $imagePath;
+        
+        
         if ($request->file('FileUpload')) {
 
             # Image upload
@@ -87,6 +112,7 @@ class BlogController extends Controller
 
         // DB::table('blogs')->insert($data);
         // DB::table('blogs')->create($data);
+        
         Blog::create($data);
 
 
