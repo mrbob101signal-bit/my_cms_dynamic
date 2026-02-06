@@ -138,7 +138,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <!-- <i class="far fa-user"></i> -->
-        <img src="{{ asset('backend')}}/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-20 mr-1 mb-2 img-circle" height="30" >
+        <img src="{{ asset('backend')}}/dist/img/chhinh.png" alt="User Avatar" class="img-size-20 mr-1 mb-2 img-circle" height="30" >
         USer
       </a>
 
@@ -153,7 +153,7 @@
         </div> -->
 
         <div class="card" >
-          <img class="card-img-top" src="{{ asset('backend')}}/dist/img/user1-128x128.jpg" alt="Card image" class="img-size-50 mr-3 img-circle mb-2" >
+          <img class="card-img-top" src="{{ asset('backend')}}/dist/img/chhinh.png" alt="Card image" class="img-size-50 mr-3 img-circle mb-2" >
           <div class="card-body rounded-0">
             <h4 class="card-title">John Doe</h4>
             <p class="card-text">Some example text.</p>
