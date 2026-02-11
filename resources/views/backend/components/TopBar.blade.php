@@ -164,9 +164,12 @@
         <!-- <div class="dropdown-divider"></div> -->
         <!-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         <div class="dropdown-divider"></div> -->
-        <a href="#" class="btn btn-danger p-2 d-block rounded-0">
-          <i class="fas fa-sign-out-alt mr-2">Logout</i>
-        </a>
+        <form action="{{ route('logout') }}" method="POST" class="d-block">
+          @csrf
+          <button type="submit" class="btn btn-danger p-2 d-block rounded-0 w-100 text-left border-0">
+            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+          </button>
+        </form>
       </div>
 
     </li>

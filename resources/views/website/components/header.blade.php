@@ -18,8 +18,8 @@
       <meta property="og:image"
          content="{{ asset('frontend') }}/public/storage/site_images/grMN6fzmbN0caP1iP7qvXloCxSZXtIUPBWEDDQbp.jpg" />
       <!-- favicon -->
-      <link href="{{ asset('frontend') }}/public/storage/site_images/ASFNtkGNXTuVDGPTNhoD2ZPNsoxHTFHseJLpSeKc.png" rel="icon">
-      <link href="{{ asset('frontend') }}/public/storage/site_images/ASFNtkGNXTuVDGPTNhoD2ZPNsoxHTFHseJLpSeKc.png" rel="apple-touch-icon">
+      <link href="{{ asset('frontend') }}/public/storage/site_images/CHHINH_CMS_logo_3.png" rel="icon">
+      <link href="{{ asset('frontend') }}/public/Frontend/public/storage/site_images/CHHINH_CMS_logo_3.png" rel="apple-touch-icon">
       <!-- stylesheet -->
       <link
          href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"

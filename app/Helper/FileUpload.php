@@ -40,21 +40,18 @@ class FileUpload
    // public static function uploadImage($file, $path = 'uploads', $oldFile = null)
    // {
    //    if (!$file) {
-   //       return $oldFile; // যদি নতুন ফাইল না দেওয়া হয়, তাহলে পুরাতন ফাইলই রাখবে
+   //       return $oldFile; 
    //    }
 
-   //    // পুরানো ফাইল মুছে ফেলা
    //    if ($oldFile && file_exists(public_path($oldFile))) {
    //       unlink(public_path($oldFile));
    //    }
 
-   //    // নতুন ফাইলের নাম বানানো
    //    $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
 
-   //    // ফাইল move করা
    //    $file->move(public_path($path), $filename);
 
-   //    return $path . '/' . $filename; // ডাটাবেজে এই path save করো
+   //    return $path . '/' . $filename;
    // }
 
 

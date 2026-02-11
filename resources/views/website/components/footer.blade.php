@@ -9,7 +9,7 @@
               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                   <div class="pxa_footer_item">
                       <a href="#" class="">
-                          <img class="" src="{{ asset('frontend') }}/public/pages/assets/images/footer_logo.png"
+                          <img class="" src="{{ asset('frontend') }}/public/pages/assets/images/CHHINH_CMS_logo_3.png"
                               alt="Logo" width="150" height="40">
                       </a>
                       

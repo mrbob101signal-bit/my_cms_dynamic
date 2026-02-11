@@ -80,22 +80,22 @@ class BlogSeeder extends Seeder
 
                 ],
 
-                // [
-                //     'cat_id' => $categories->random()->id,
-                //     'title' => 'Engaging creating blogs posts articles producing',
-                //     'slug' => Str::slug('Engaging creating blogs posts articles producing'),
-                //     'tags' => 'Stories',
-                //     'description' => "Dummy text of the printing And Typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                //     'author' => 'Mia Parker',
-                //     'meta_title' => 'Engaging creating blogs posts articles producing',
-                //     'meta_keywords' => 'Engaging creating blogs posts articles producing',
-                //     'meta_description' => 'Engaging creating blogs posts articles producing',
-                //     'publish_date' => now(),
-                //     'status' => 'publish',
-                //     'image' => 'https://img.freepik.com/free-photo/close-up-person-working-home-night_23-2149090964.jpg',
+                [
+                    'cat_id' => $categories->random()->id,
+                    'title' => 'Engaging creating blogs posts articles producing',
+                    'slug' => Str::slug('Engaging creating blogs posts articles producing'),
+                    'tags' => 'Stories',
+                    'description' => "Dummy text of the printing And Typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                    'author' => 'Mia Parker',
+                    'meta_title' => 'Engaging creating blogs posts articles producing',
+                    'meta_keywords' => 'Engaging creating blogs posts articles producing',
+                    'meta_description' => 'Engaging creating blogs posts articles producing',
+                    'publish_date' => now(),
+                    'status' => 'publish',
+                    'image' => 'https://img.freepik.com/free-photo/close-up-person-working-home-night_23-2149090964.jpg',
 
 
-                // ],
+                ],
                 // [
                 //     'cat_id' => $categories->random()->id,
                 //     'title' => 'Email Marketing Strategies for Conversion',

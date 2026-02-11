@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Auth\AuthController;
 
 use App\Http\Controllers\admin\FaqController;
 
@@ -43,13 +44,22 @@ use App\Http\Controllers\admin\WebsiteSettingController;
 # ============== Backend Routes ============== #
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+});
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
    // Route::get('/', [DashBoardController::class, 'index'])->name('admin.dashboard');
 
     # Dashboard Route
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [DashBoardController::class, 'index'])->name('admin.dashboard');
 
     // Page Route
     Route::resource('/page', PageController::class);
@@ -104,7 +114,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('tag', TagController::class);
 
     # Service Route API
-    route::resource('/service', ServiceController::class);
+    Route::resource('/service', ServiceController::class);
 
     // route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 
@@ -128,7 +138,7 @@ Route::group(['prefix' => 'admin'], function () {
     # Faq Route API
     // route::get('/faq', [App\Http\Controllers\FaqController::class, 'index'])->name('faq.index');
 
-    route::resource('faq', FaqController::class);
+    Route::resource('faq', FaqController::class);
 
     # Partner Route API
 
@@ -179,11 +189,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('setting/basic-mail/update/{MailSetting}', [WebsiteSettingController::class, 'BasiMailUpdate'])->name('setting.basic-mail.update');
 
 
-    route::get('model-create', [WebsiteController::class, 'ModelCreate'])->name('model-create');
-    route::post('model-store', [WebsiteController::class, 'ModelStore'])->name('model-store');
+    Route::get('model-create', [WebsiteController::class, 'ModelCreate'])->name('model-create');
+    Route::post('model-store', [WebsiteController::class, 'ModelStore'])->name('model-store');
 
 
-    route::get('clear', function () {
+    Route::get('clear', function () {
         // Artisan::call('php artisan r:l');
         $folder = "Raj";
         $createName = $folder . "/" . "Emon";
@@ -217,7 +227,7 @@ Route::post('create-model/store', [CustomModelController::class,'store'])->name(
 
 // Route::get('/', [FrontendController::class, 'index'])->name('website');
 
-Route::group(['prefix' => 'website'], function () {
+Route::group([], function () {
 
     Route::get('/', [FrontendController::class, 'index'])->name('website.home');
 
@@ -233,6 +243,7 @@ Route::group(['prefix' => 'website'], function () {
     //service
     Route::get('/service', [FrontendController::class, 'service'])->name('website.service');
     Route::get('/service/details/{service:slug}', [FrontendController::class, 'ServiceDetails'])->name('website.service.details');
+    Route::get('/service-category/{slug}', [FrontendController::class, 'serviceCategory'])->name('website.service-category');
 
 
     // Route::post('/send-message', [FrontendController::class, 'SendMessage'])->name('website.send-message');

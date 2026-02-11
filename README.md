@@ -16,9 +16,3 @@ This is a dynamic content management system (CMS) built with Laravel. It allows 
 - CRUD operations for posts, services, and categories
 - Customizable website settings
 - Email contact system
-
-## Installation
-
-1. Clone this repository:
-```bash
-git https://github.com/mrbob101signal-bit/my_cms_dynamic.git

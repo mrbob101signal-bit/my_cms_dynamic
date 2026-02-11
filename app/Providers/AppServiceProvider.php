@@ -13,7 +13,6 @@ use App\Models\TeamMember;
 use App\Models\MailSetting;
 use App\Models\Testimonial;
 use App\Models\WebsiteSetting;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -26,14 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
-
-        # category
-        // $category = $this->app->make('category');
-        // $category = Category::all();
-        // dd($category->count());
-        // view()->share('category', $category);
-        
-        
     }
 
     /**
@@ -41,91 +32,61 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (!app()->runningInConsole() || app()->runningUnitTests()) {
 
-         if (!app()->runningInConsole() || app()->runningUnitTests()) {
-            // $general_setting = DB::table('categories')->latest()->first();
-            //...
-      
+            // Services with category
+            $serviceCategory = Service::has('category')->with('category')->get();
 
-       
-        // $serviceCategory = Service::latest()->take(4)->with('category')->get();
-        // view()->share('serviceCategory', $serviceCategory);
+            // All services
+            $service = Service::all();
 
+            // Other models
+            $blog = Blog::latest()->take(6)->inRandomOrder()->get();
+            $partner = Partner::all();
+            $team = TeamMember::all();
+            $pricePlan = PricePlan::all();
+            $testimonial = Testimonial::all();
+            $faq = Faq::all();
+            $category = Category::all();
+            $totalBlog = Blog::all();
+            $categorylist = Category::all();
+            $website = WebsiteSetting::first();
+            $page = Page::first();
+            $mailSetting = MailSetting::first();
 
-        // All Model 
+            // Configure mail dynamically if exists
+            if ($mailSetting) {
+                Config::set('mail', [
+                    'driver' => $mailSetting->mail_driver,
+                    'host' => $mailSetting->mail_host,
+                    'port' => $mailSetting->mail_port,
+                    'encryption' => $mailSetting->mail_encryption,
+                    'username' => $mailSetting->mail_username,
+                    'password' => $mailSetting->mail_password,
+                    'from' => [
+                        'address' => $mailSetting->mail_form_address,
+                        'name' => $mailSetting->mail_form_name,
+                    ],
+                ]);
+            }
 
-        $serviceCategory = Service::where('cat_id', 17)->with('category')->get();
-
-        // return $serviceCategory;
-
-        $service = Service::all();
-        $blog = Blog::latest()->take(6)->inRandomOrder()->get();
-        $partner = Partner::all();
-        $team = TeamMember::all();
-        $pricePlan = PricePlan::all();
-        $testimonial = Testimonial::all();
-        $faq = Faq::all();
-        $category = Category::get();
-        $TotalBlog = Blog::all();
-
-        $categorylist = Category::all();
-
-        $website = WebsiteSetting::first();
-
-        view()->share('categorylist', $categorylist);
-
-
-        //Pages
-        $page = Page::first();
-
-        // $serviceCategory = Service::latest()->take(4)->get();
-        
-        $serviceCategory = Service::where('cat_id', 17)->with('category')->get();
-
-        # Mail Setting
-        $mailSetting = MailSetting::first();
-
-        if(!empty($mailSetting)){
-
-            $data_mail = [
-                'drive' => $mailSetting->mail_driver,
-                'host' => $mailSetting->mail_host,
-                'port' => $mailSetting->mail_port,
-                'encryption' => $mailSetting->mail_encryption,
-                'username' => $mailSetting->mail_username,
-                'password' => $mailSetting->mail_password,
-                'form' => [
-                    'address' => $mailSetting->mail_form_address,
-                    'name' => $mailSetting->mail_form_name,
-                ]  
-            ];
-
-            Config::set('mail',$data_mail);
-        }
-
-        $data = [
-            'serviceCategory' => $serviceCategory,
-            'service' => $service,
-            'blog' => $blog,
-            'partner' => $partner,
-            'team' => $team,
-            'pricePlan' => $pricePlan,
-            'testimonial' => $testimonial,
-            'faq' => $faq,
-            'category' => $category,
-            'TotalBlog' => $TotalBlog,
-        ];
-
-        // return view('pages.frontend')->with($data);
-
-        // View::share(['data' => $data]);
-
-        # vew data share
-
-        // View::share(['data' => $data]);
-
-        View::share(['category' => $category, 'TotalBlog' => $TotalBlog,'pricePlan' => $pricePlan, 'serviceCategory' => $serviceCategory, 'service' => $service, 'blog' => $blog, 'partner' => $partner, 'team' => $team, 'testimonial' => $testimonial, 'faq' => $faq, 'website' => $website, 'mailSetting' => $mailSetting, 'page' => $page]);
+            // Share data with all views
+            View::share([
+                'serviceCategory' => $serviceCategory,
+                'service' => $service,
+                'blog' => $blog,
+                'partner' => $partner,
+                'team' => $team,
+                'pricePlan' => $pricePlan,
+                'testimonial' => $testimonial,
+                'faq' => $faq,
+                'category' => $category,
+                'categorylist' => $categorylist,
+                'TotalBlog' => $totalBlog,
+                'website' => $website,
+                'mailSetting' => $mailSetting,
+                'page' => $page,
+            ]);
         }
     }
 }

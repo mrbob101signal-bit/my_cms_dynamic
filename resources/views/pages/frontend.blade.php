@@ -14,13 +14,13 @@
                             Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
                             amet.</p>
                         <div class="pxa_btn_wr">
-                            <a href="about.html" class="pxa_btn">Read More</a>
+                            <a href="{{ route('website.about-us') }}" class="pxa_btn">Read More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="pxa_banner_right">
-                        <img class="" src="{{ asset('frontend') }}/public/pages/assets/images/banner_imgLeft.png"
+                        <img class="" src="{{ asset('frontend') }}/public/pages/assets/images/me_and_her.png"
                             alt="Banner" width="588" height="454">
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             deserunt mollit anim id es.
                         </p>
                         <div class="pxa_btn_wr">
-                            <a href="about.html" class="pxa_btn">View More</a>
+                            <a href="{{ route('website.about-us') }}" class="pxa_btn">View More</a>
                         </div>
                     </div>
                 </div>
@@ -577,3 +577,4 @@
     </section>
     <!--===  Faq Section End ===-->
 @endsection
+
