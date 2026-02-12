@@ -55,7 +55,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-   // Route::get('/', [DashBoardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', fn() => redirect()->route('admin.dashboard'))->name('admin.home');
 
     # Dashboard Route
 
@@ -194,22 +194,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     Route::get('clear', function () {
-        // Artisan::call('php artisan r:l');
-        $folder = "Raj";
-        $createName = $folder . "/" . "Emon";
+        Artisan::call('optimize:clear');
 
-        // if($createName){
-
-        // }
-        // else{
-
-        // }
-
-        $list = Artisan::call("make:model" . " " . $createName);
-        // dd(Artisan::output());
-        // return response($list)->json('create',"Model create success");
-
-        return response()->json(['success' => 'Model Create' . $list . ' Success']);
+        return back()->with([
+            'message' => 'Application cache cleared successfully.',
+            'alert-type' => 'success',
+            'data' => 'System',
+        ]);
     })->name('admin.clear');
 });
 

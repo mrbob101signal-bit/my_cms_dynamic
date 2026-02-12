@@ -70,7 +70,7 @@
 
 <!-- Toastify js -->
 {{-- <script type="text/javascript" src="{{ asset('backend') }}/plugins/toastify/toastify-js.js"></script> --}}
-<script type="text/javascript" src="{{ asset('backend') }}/plugins/toastify/toastify.min.css"></script>
+<script type="text/javascript" src="{{ asset('backend') }}/plugins/toastify/toastify.min.js"></script>
 {{-- <script>
     // Data Insert Toast
     @if (Session::has('success'))
@@ -267,15 +267,19 @@
 
         });
 
-        // CodeMirror
-        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-            mode: "htmlmixed",
-            theme: "monokai"
-        });
+        if (typeof CodeMirror !== 'undefined') {
+            const codeMirrorElement = document.getElementById('codeMirrorDemo');
+            if (codeMirrorElement) {
+                CodeMirror.fromTextArea(codeMirrorElement, {
+                    mode: 'htmlmixed',
+                    theme: 'monokai'
+                });
+            }
+        }
     })
 
     //Colorpicker
-    $('#color1,#color2,#color3,#color4,#color5,#color6,#color7,#color8,#color9,#color10.my-colorpicker2').colorpicker()
+    $('#color1,#color2,#color3,#color4,#color5,#color6,#color7,#color8,#color9,#color10,.my-colorpicker2').colorpicker()
     // $('.colorpicker1').colorpicker()
     //color picker with addon
     // $('.my-colorpicker2').colorpicker()
@@ -297,20 +301,17 @@
     // $('#cp2, #cp3a, #cp3b').colorpicker();
 </script>
 
-<script src="{{ asset('Backend') }}/dist/js/custom.js"></script>
+<script src="{{ asset('backend') }}/dist/js/custom.js"></script>
 <script>
     $(function() {
-        /* ChartJS
-         * -------
-         * Here we will create a few charts using ChartJS
-         */
+        if (typeof Chart === 'undefined') {
+            return;
+        }
 
-        //--------------
-        //- AREA CHART -
-        //--------------
-
-        // Get context with jQuery - using jQuery's .get() method.
-        var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+        function getChartContext(id) {
+            const element = document.getElementById(id);
+            return element ? element.getContext('2d') : null;
+        }
 
         var areaChartData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -359,34 +360,30 @@
             }
         }
 
-        // This will get the first returned node in the jQuery collection.
-        new Chart(areaChartCanvas, {
-            type: 'line',
-            data: areaChartData,
-            options: areaChartOptions
-        })
+        var areaChartCanvas = getChartContext('areaChart');
+        if (areaChartCanvas) {
+            new Chart(areaChartCanvas, {
+                type: 'line',
+                data: areaChartData,
+                options: areaChartOptions
+            });
+        }
 
-        //-------------
-        //- LINE CHART -
-        //--------------
-        var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
-        var lineChartOptions = $.extend(true, {}, areaChartOptions)
-        var lineChartData = $.extend(true, {}, areaChartData)
-        lineChartData.datasets[0].fill = false;
-        lineChartData.datasets[1].fill = false;
-        lineChartOptions.datasetFill = false
+        var lineChartCanvas = getChartContext('lineChart');
+        if (lineChartCanvas) {
+            var lineChartOptions = $.extend(true, {}, areaChartOptions);
+            var lineChartData = $.extend(true, {}, areaChartData);
+            lineChartData.datasets[0].fill = false;
+            lineChartData.datasets[1].fill = false;
+            lineChartOptions.datasetFill = false;
 
-        var lineChart = new Chart(lineChartCanvas, {
-            type: 'line',
-            data: lineChartData,
-            options: lineChartOptions
-        })
+            new Chart(lineChartCanvas, {
+                type: 'line',
+                data: lineChartData,
+                options: lineChartOptions
+            });
+        }
 
-        //-------------
-        //- DONUT CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
         var donutData = {
             labels: [
                 'Chrome',
@@ -405,36 +402,32 @@
             maintainAspectRatio: false,
             responsive: true,
         }
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        new Chart(donutChartCanvas, {
-            type: 'doughnut',
-            data: donutData,
-            options: donutOptions
-        })
 
-        //-------------
-        //- PIE CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var donutChartCanvas = getChartContext('donutChart');
+        if (donutChartCanvas) {
+            new Chart(donutChartCanvas, {
+                type: 'doughnut',
+                data: donutData,
+                options: donutOptions
+            });
+        }
+
         var pieData = donutData;
         var pieOptions = {
             maintainAspectRatio: false,
             responsive: true,
         }
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        new Chart(pieChartCanvas, {
-            type: 'pie',
-            data: pieData,
-            options: pieOptions
-        })
 
-        //-------------
-        //- BAR CHART -
-        //-------------
-        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        var pieChartCanvas = getChartContext('pieChart');
+        if (pieChartCanvas) {
+            new Chart(pieChartCanvas, {
+                type: 'pie',
+                data: pieData,
+                options: pieOptions
+            });
+        }
+
+        var barChartCanvas = getChartContext('barChart');
         var barChartData = $.extend(true, {}, areaChartData)
         var temp0 = areaChartData.datasets[0]
         var temp1 = areaChartData.datasets[1]
@@ -447,16 +440,15 @@
             datasetFill: false
         }
 
-        new Chart(barChartCanvas, {
-            type: 'bar',
-            data: barChartData,
-            options: barChartOptions
-        })
+        if (barChartCanvas) {
+            new Chart(barChartCanvas, {
+                type: 'bar',
+                data: barChartData,
+                options: barChartOptions
+            });
+        }
 
-        //---------------------
-        //- STACKED BAR CHART -
-        //---------------------
-        var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+        var stackedBarChartCanvas = getChartContext('stackedBarChart');
         var stackedBarChartData = $.extend(true, {}, barChartData)
 
         var stackedBarChartOptions = {
@@ -472,18 +464,19 @@
             }
         }
 
-        new Chart(stackedBarChartCanvas, {
-            type: 'bar',
-            data: stackedBarChartData,
-            options: stackedBarChartOptions
-        })
+        if (stackedBarChartCanvas) {
+            new Chart(stackedBarChartCanvas, {
+                type: 'bar',
+                data: stackedBarChartData,
+                options: stackedBarChartOptions
+            });
+        }
     })
 </script>
 
 <!-- iconpicker JS -->
 {{-- fontawesome-iconpicker.js --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/js/bootstrap-iconpicker.min.js"> --}}
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/js/bootstrap-iconpicker.bundle.min.js">
 </script>
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-iconpicker/1.10.0/js/bootstrap-iconpicker.bundle.min.js"></script> --}}

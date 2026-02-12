@@ -1,154 +1,140 @@
 @extends('layouts.admin-app')
 
+@section('title', 'Admin | Dashboard')
+
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Dashboard</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('website.home') }}" target="_blank">Website</a>
+                            </li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
 
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
+                        <div class="small-box dashboard-stat stat-category">
                             <div class="inner">
                                 <h3>{{ $category->count() }}</h3>
-
                                 <p>Total Category</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
+                            <div class="icon stat-icon">
+                                <i class="fas fa-th-large"></i>
                             </div>
-                            <a href="{{ route('admin.category') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('admin.category') }}" class="small-box-footer">Manage <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
+
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
+                        <div class="small-box dashboard-stat stat-blog">
                             <div class="inner">
                                 <h3>{{ $TotalBlog->count() }}</h3>
-                                <p>Blog List</p>
+                                <p>Total Blog</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                            <div class="icon stat-icon">
+                                <i class="fas fa-blog"></i>
                             </div>
-                            <a href="{{ route('admin.blog.index') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('admin.blog.index') }}" class="small-box-footer">Manage <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
+
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
+                        <div class="small-box dashboard-stat stat-service">
                             <div class="inner">
                                 <h3>{{ $service->count() }}</h3>
                                 <p>All Service</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                            <div class="icon stat-icon">
+                                <i class="fas fa-concierge-bell"></i>
                             </div>
-                            <a href="{{ route('service.index') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('service.index') }}" class="small-box-footer">Manage <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
+
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
+                        <div class="small-box dashboard-stat stat-team">
                             <div class="inner">
                                 <h3>{{ $team->count() }}</h3>
-
                                 <p>All Team</p>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                            <div class="icon stat-icon">
+                                <i class="fas fa-users"></i>
                             </div>
-                            <a href="{{ route('team-member.index') }}" class="small-box-footer">More info <i
+                            <a href="{{ route('team-member.index') }}" class="small-box-footer">Manage <i
                                     class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- AREA CHART -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Area Chart</h3>
 
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card card-outline card-primary">
+                            <div class="card-header border-0">
+                                <h3 class="card-title mb-0">Traffic Overview</h3>
                             </div>
                             <div class="card-body">
                                 <div class="chart">
-                                    <div class="chartjs-size-monitor">
-                                        <div class="chartjs-size-monitor-expand">
-                                            <div class=""></div>
-                                        </div>
-                                        <div class="chartjs-size-monitor-shrink">
-                                            <div class=""></div>
-                                        </div>
-                                    </div>
                                     <canvas id="areaChart"
-                                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 752px;"
-                                        width="752" height="250" class="chartjs-render-monitor"></canvas>
+                                        style="min-height: 260px; height: 260px; max-height: 260px; max-width: 100%;"></canvas>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
-
                     </div>
 
-                   
-                </div>
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0-rc
-        </div>
-    </footer>
+                    <div class="col-lg-4">
+                        <div class="card card-outline card-secondary">
+                            <div class="card-header border-0">
+                                <h3 class="card-title mb-0">Quick Access</h3>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ route('page.index') }}" class="btn btn-outline-primary btn-block mb-2">Manage
+                                    Pages</a>
+                                <a href="{{ route('setting.website') }}"
+                                    class="btn btn-outline-primary btn-block mb-2">Website Settings</a>
+                                <a href="{{ route('website.home') }}" target="_blank"
+                                    class="btn btn-outline-primary btn-block">View Live Website</a>
+                            </div>
+                        </div>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+                        <div class="card card-outline card-secondary">
+                            <div class="card-header border-0">
+                                <h3 class="card-title mb-0">Recent Blogs</h3>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="list-group list-group-flush">
+                                    @forelse ($blog->take(5) as $recentBlog)
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <a href="{{ route('admin.blog.edit', $recentBlog->slug) }}" class="text-dark">
+                                                {{ \Illuminate\Support\Str::limit($recentBlog->title, 35) }}
+                                            </a>
+                                            <small
+                                                class="text-muted">{{ \Carbon\Carbon::parse($recentBlog->created_at)->diffForHumans() }}</small>
+                                        </li>
+                                    @empty
+                                        <li class="list-group-item text-muted">No blog data found.</li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <!-- ./wrapper -->
 @endsection
