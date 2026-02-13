@@ -107,7 +107,7 @@
           <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="pxa_footer_copyRight">
-                      <p class="">Copyright © 2024. All Rights Reserved</p>
+                      <p class="">Copyright © 2026. All Rights Reserved</p>
                   </div>
               </div>
 
