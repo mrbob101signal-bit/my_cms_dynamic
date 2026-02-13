@@ -12,7 +12,7 @@ use App\Http\Controllers\frontend\FrontendController;
 Route::group(['prefix' => 'website'], function () {
 
    Route::get('/', [FrontendController::class, 'index'])->name('website.home');
-
+   
    Route::get('/about-us', [FrontendController::class, 'about'])->name('website.about-us');
 
    //Blog 
@@ -22,9 +22,10 @@ Route::group(['prefix' => 'website'], function () {
 
    Route::get('/gallery', [FrontendController::class, 'gallery'])->name('website.gallery');
 
-   //service
-   Route::get('/service', [FrontendController::class, 'service'])->name('website.service');
-   Route::get('/service/details/{service:slug}', [FrontendController::class, 'ServiceDetails'])->name('website.service.details');
+    //service
+    Route::get('/service', [FrontendController::class, 'service'])->name('website.service');
+    Route::get('/service/details/{service:slug}', [FrontendController::class, 'ServiceDetails'])->name('website.service.details');
+    Route::get('/service-category/{slug}', [FrontendController::class, 'serviceCategory'])->name('website.service-category');
 
 
    // Route::post('/send-message', [FrontendController::class, 'SendMessage'])->name('website.send-message');
